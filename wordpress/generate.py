@@ -85,7 +85,7 @@ def section(cls, children, tag="section"):
 
 def widget(wtype, settings, cls=""):
     if cls:
-        settings["css_classes"] = cls
+        settings["_css_classes"] = cls
     return {"id": rid(), "elType": "widget", "widgetType": wtype, "settings": settings, "elements": []}
 
 
@@ -126,7 +126,7 @@ def placeholder(label, cls=""):
 
 
 def icon_box(ico, title, desc, cls, url=None):
-    s = {"selected_icon": ico, "title_text": title, "description_text": desc, "position": "left", "title_size": "h3"}
+    s = {"selected_icon": ico, "title_text": title, "description_text": desc, "position": "inline-start", "title_size": "h3"}
     if url:
         s["link"] = link(url)
     return widget("icon-box", s, cls)
