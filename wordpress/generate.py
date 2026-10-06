@@ -245,7 +245,8 @@ def drawer():
         items.append({"_id": rid(), "item_title": name})
         panels.append(con("drawer-subs", [link_list([(s, cat_url(name, s)) for s in subs] + [(f"Shop all {name}", cat_url(name))], "link-list")]))
     acc = widget("nested-accordion", {"items": items, "default_state": "all_collapsed", "max_items_expended": "one", "title_tag": "div",
-                                      "accordion_item_title_icon": icon("fas fa-plus"), "accordion_item_title_icon_active": icon("fas fa-minus")}, "drawer-cats")
+                                      "accordion_item_title_icon": icon("fas fa-plus"), "accordion_item_title_icon_active": icon("fas fa-minus"),
+                                      "accordion_item_title_position_horizontal": "stretch", "accordion_item_title_icon_position": "end"}, "drawer-cats")
     acc["elements"] = panels
     return [section("drawer", [
         con("drawer-top", [image("logo", "logo", "/", "full")]),
@@ -457,7 +458,8 @@ def faq_page():
     groups = []
     for title, qs in FAQ:
         acc = widget("nested-accordion", {"items": [{"_id": rid(), "item_title": q} for q, _ in qs], "default_state": "all_collapsed", "title_tag": "h3", "faq_schema": "",
-                                          "accordion_item_title_icon": icon("fas fa-plus"), "accordion_item_title_icon_active": icon("fas fa-minus")}, "faq-list")
+                                          "accordion_item_title_icon": icon("fas fa-plus"), "accordion_item_title_icon_active": icon("fas fa-minus"),
+                                      "accordion_item_title_position_horizontal": "stretch", "accordion_item_title_icon_position": "end"}, "faq-list")
         acc["elements"] = [con("faq-answer", [text(a, "body-text")]) for _, a in qs]
         groups.append(con("stack", [heading(title, "drawer-label", "h2"), acc]))
     return [
