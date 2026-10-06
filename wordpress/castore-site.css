@@ -574,3 +574,9 @@ html body.woocommerce.archive.ast-left-sidebar ul.products.products li.product.p
 
 /* Product rows hide themselves until their category has products. */
 .elementor .e-con.band:has(.product-row):not(:has(li.product)) { display: none; }
+
+/* Shop and category title banner (Astra archive banner) */
+html body .ast-archive-entry-banner, html body .woocommerce-products-header.ast-archive-entry-banner { background: var(--color-deep); padding-top: var(--space-10); padding-bottom: var(--space-10); }
+html body .ast-archive-entry-banner :is(.page-title, .ast-archive-title, h1) { color: var(--color-white); font-family: var(--font-display); font-size: var(--text-section); }
+html body .ast-archive-entry-banner :is(.ast-archive-description, .term-description, p) { color: var(--color-on-deep); }
+html body .ast-archive-entry-banner .woocommerce-breadcrumb, html body .ast-archive-entry-banner .woocommerce-breadcrumb a { color: var(--color-on-deep-muted); }
