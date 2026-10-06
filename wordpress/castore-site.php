@@ -109,7 +109,7 @@ add_filter( 'woocommerce_product_add_to_cart_text', function ( $text, $product )
 /* Buy now from the single product page goes straight to checkout. */
 add_action( 'woocommerce_after_add_to_cart_button', function () {
 	global $product;
-	if ( $product && $product->is_type( 'simple' ) ) {
+	if ( $product && ( $product->is_type( 'simple' ) || $product->is_type( 'variable' ) ) ) {
 		echo '<button type="submit" name="castore_buy_now" value="1" class="button alt buy-now-single">Buy now</button>';
 	}
 } );
@@ -150,7 +150,7 @@ add_filter( 'woocommerce_product_tabs', function ( $tabs ) {
 	);
 	unset( $tabs['reviews'] );
 	return $tabs;
-} );
+}, 98 );
 
 /* ---------- Category pages: subcategories as chips ---------- */
 add_action( 'woocommerce_archive_description', function () {
