@@ -307,9 +307,9 @@ def home():
         ]),
     ], "hero")])
     trust = section("band band-tight", [wrap([con("trust-strip", [
-        icon_box(icon("fas fa-mobile-screen-button"), "Pay with M-Pesa", "Pay on checkout", "trust-item"),
+        icon_box(icon("fas fa-mobile-alt"), "Pay with M-Pesa", "Pay on checkout", "trust-item"),
         icon_box(icon("fas fa-truck"), "Fast delivery", "Nairobi in [X] days, countrywide in [X] days", "trust-item"),
-        icon_box(icon("fas fa-circle-check"), "Quality checked", "[How you check products]", "trust-item"),
+        icon_box(icon("fas fa-check-circle"), "Quality checked", "[How you check products]", "trust-item"),
         icon_box(icon("fab fa-whatsapp", "fa-brands"), "WhatsApp support", "[PHONE NUMBER]", "trust-item", "/whatsapp/"),
     ])])])
     tiles = []
@@ -389,7 +389,7 @@ def about_page():
         section("band band-alt", [wrap([
             section_head("Everything your home needs, in one place"),
             con("value-row", [
-                icon_box(icon("fas fa-circle-check"), "Quality checked", "[How you choose and check products]", "trust-item"),
+                icon_box(icon("fas fa-check-circle"), "Quality checked", "[How you choose and check products]", "trust-item"),
                 icon_box(icon("fas fa-truck"), "Countrywide delivery", "Nairobi in [X] days, countrywide in [X] days", "trust-item"),
                 icon_box(icon("fab fa-whatsapp", "fa-brands"), "WhatsApp support", "[PHONE NUMBER]", "trust-item", "/whatsapp/"),
             ]),
@@ -416,7 +416,7 @@ def contact_page():
             {"_id": rid(), "custom_id": "message", "field_type": "textarea", "field_label": "Message", "placeholder": "", "required": "true", "width": "100", "rows": 5},
         ],
         "button_text": "Send message",
-        "show_labels": "yes",
+        "show_labels": "true",
         "submit_actions": ["email"],
         "email_subject": "New message from the Castore Collection website",
         "success_message": "Thank you. We will get back to you soon.",
@@ -426,7 +426,7 @@ def contact_page():
             icon_box(icon("fas fa-phone"), "Phone", "[PHONE NUMBER]", "trust-item"),
             icon_box(icon("fab fa-whatsapp", "fa-brands"), "WhatsApp", "[PHONE / WHATSAPP]", "trust-item", "/whatsapp/"),
             icon_box(icon("far fa-envelope", "fa-regular"), "Email", "[EMAIL]", "trust-item"),
-            icon_box(icon("fas fa-location-dot"), "Location", "[LOCATION], Kenya", "trust-item"),
+            icon_box(icon("fas fa-map-marker-alt"), "Location", "[LOCATION], Kenya", "trust-item"),
         ]),
         placeholder("[Map or store photo]", "split-media"),
     ])
