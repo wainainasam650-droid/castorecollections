@@ -436,7 +436,7 @@ def contact_page():
             icon_box(icon("far fa-envelope", "fa-regular"), "Email", "[EMAIL]", "trust-item"),
             icon_box(icon("fas fa-map-marker-alt"), "Location", "[LOCATION], Kenya", "trust-item"),
         ]),
-        placeholder("[Map or store photo]", "split-media"),
+        placeholder("[Map or store photo]", "contact-media"),
     ])
     return [
         page_banner("Contact us"),
@@ -487,7 +487,7 @@ def policy_template():
         section("band band-tight", [wrap([con("policy-layout", [
             link_list(POLICIES, "link-list policy-nav"),
             con("policy-body", [
-                widget("theme-page-title", {"header_size": "h1"}, "section-heading"),
+                widget("theme-page-title", {"header_size": "h1", "__dynamic__": {"title": '[elementor-tag id="' + rid() + '" name="page-title" settings="%7B%7D"]'}}, "section-heading"),
                 widget("theme-post-content", {}, "body-text policy-content"),
             ]),
         ])])]),
