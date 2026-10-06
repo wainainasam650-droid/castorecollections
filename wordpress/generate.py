@@ -14,7 +14,14 @@ from urllib.parse import quote
 OUT = os.path.join(os.path.dirname(__file__), "build")
 _n = 0
 
-IMG = {"logo": 425, "kitchen": 468, "dishrack": 469, "plates": 402, "seat_room": 444}
+UP = "https://castorecollections.co.ke/wp-content/uploads/"
+IMG = {
+    "logo": (425, UP + "2026/09/cropped-Screenshot_2026-09-21_172206-removebg-preview.png"),
+    "kitchen": (468, UP + "2026/10/kitchen-hero.jpg"),
+    "dishrack": (469, UP + "2026/10/dish-rack.jpg"),
+    "plates": (402, UP + "2026/09/c03b543b54ccca179067b9d10f3975c0.jpg"),
+    "seat_room": (444, UP + "2026/09/d8cda7eff85d379bb87b287fb2faabaa.jpg"),
+}
 
 CATS = [
     ("Kitchen & Dining", ["Cookware & Pots", "Pressure Cookers", "Utensils & Gadgets", "Knives & Chopping Boards", "Food Storage Containers", "Dinnerware & Plates", "Cups, Mugs & Glasses", "Flasks & Water Bottles", "Bakeware", "Tea & Serving Sets", "Kitchen Racks & Holders", "Lunch Boxes"]),
@@ -114,7 +121,7 @@ def button(label, url, cls, ico=None, dynamic_popup=None):
 
 
 def image(key, cls, url=None, size="large"):
-    s = {"image": {"id": IMG[key], "url": ""}, "image_size": size}
+    s = {"image": {"id": IMG[key][0], "url": IMG[key][1]}, "image_size": size}
     if url:
         s["link_to"] = "custom"
         s["link"] = link(url)
