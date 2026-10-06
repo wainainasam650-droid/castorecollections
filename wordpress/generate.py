@@ -104,7 +104,7 @@ def button(label, url, cls, ico=None, dynamic_popup=None):
     s = {"text": label, "link": link(url)}
     if ico:
         s["selected_icon"] = ico
-        s["icon_align"] = "left"
+        s["icon_align"] = "row"
     if dynamic_popup:
         action = "toggle" if dynamic_popup == "__MEGA_ID__" else "open"
         tag_settings = quote(json.dumps({"popup": dynamic_popup, "action": action}, separators=(",", ":")))
