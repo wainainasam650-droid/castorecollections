@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Castore Collection – Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" menu-open="{{ menuOpen }}" drawer-open="{{ drawerOpen }}" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+
+  <section class="container hero" data-screen-label="Home hero">
+    <div class="hero-copy">
+      <span class="eyebrow">Household essentials, delivered</span>
+      <h1 class="heading-hero">Better products.<br>Better living.</h1>
+      <p class="lead">Quality kitchenware, home decor and water dispensers for Kenyan homes, at fair prices, with delivery to your door.</p>
+      <div class="row"><a class="button-primary" href="Shop.dc.html">Shop now</a></div>
+      <div class="tick-list">
+        <span class="tick-item"><svg class="icon-sm tick" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Pay with M-Pesa</span>
+        <span class="tick-item"><svg class="icon-sm tick" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"></path></svg>Countrywide delivery</span>
+      </div>
+    </div>
+    <div class="hero-media">
+      <div class="hero-photo-tall"><img class="photo" src="images/kitchen-hero.jpg" alt="Organised kitchen with cookware, plates and a gas cooker"></div>
+      <div class="hero-side">
+        <div class="hero-photo-small"><img class="photo" src="images/dish-rack.jpg" alt="Two-tier dish rack with plates, cups and cutlery"></div>
+        <a class="promo-box" href="Shop.dc.html">
+          <span class="eyebrow-light">This week</span>
+          <span class="promo-box-title">Up to 25% off selected items</span>
+          <span class="promo-box-link">See the deals</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section-tight">
+    <div class="trust-strip">
+      <div class="trust-item">
+        <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span>
+        <div><div class="trust-title">Pay with M-Pesa</div><div class="trust-text">Pay on checkout</div></div>
+      </div>
+      <div class="trust-item">
+        <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
+        <div><div class="trust-title">Fast delivery</div><div class="trust-text">Nairobi in [X] days, countrywide in [X] days</div></div>
+      </div>
+      <div class="trust-item">
+        <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+        <div><div class="trust-title">Quality checked</div><div class="trust-text">[How items are checked]</div></div>
+      </div>
+      <div class="trust-item">
+        <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg></span>
+        <div><div class="trust-title">WhatsApp support</div><div class="trust-text">[PHONE NUMBER]</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section-tight">
+    <div class="section-heading">
+      <h2 class="heading-section">Shop by category</h2>
+      <a class="text-link" href="Shop.dc.html">View all categories</a>
+    </div>
+    <div class="category-tiles">
+      <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="10">
+        <a class="card-category" href="Category.dc.html">
+          <div class="card-category-photo image-placeholder"><span class="image-placeholder-label">[Category photo]</span></div>
+          <div class="card-category-body">
+            <span class="card-category-name">{{ t.name }}</span>
+            <span class="card-category-subs">{{ t.subs }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div class="stack"><span class="eyebrow">Customer favourites</span><h2 class="heading-section">Best Sellers</h2></div>
+        <a class="text-link" href="Shop.dc.html">See all best sellers</a>
+      </div>
+      <div class="product-row">
+        <div class="product-slot"><dc-import name="ProductCard" category="Furniture &amp; Seating" product="Deluxe Inflatable Seat" price="KSh 2,999" old-price="KSh 3,999" badge="-25%" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Kitchen &amp; Dining" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Water Dispensers &amp; Filters" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Bedding" hint-size="100%,440px"></dc-import></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-heading">
+        <div class="stack"><span class="eyebrow">Kitchen &amp; Dining</span><h2 class="heading-section">Kitchen Favourites</h2></div>
+        <a class="text-link" href="Category.dc.html">Shop the kitchen</a>
+      </div>
+      <div class="product-row">
+        <div class="product-slot"><dc-import name="ProductCard" category="Cookware &amp; Pots" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Food Storage Containers" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Utensils &amp; Gadgets" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Flasks &amp; Water Bottles" hint-size="100%,440px"></dc-import></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section-tight">
+    <div class="sale-banner">
+      <div class="sale-banner-copy">
+        <span class="sale-banner-eyebrow">Kitchen &amp; Dining</span>
+        <h2 class="sale-banner-title">Kitchen upgrade sale: up to 25% off</h2>
+        <p class="sale-banner-text">Cookware, storage and serving pieces at our best prices. Offer ends [DATE].</p>
+        <div class="row"><a class="button-light" href="Category.dc.html">Shop the sale</a></div>
+      </div>
+      <div class="sale-banner-photo image-placeholder"><span class="image-placeholder-label">[Sale photo: kitchen set]</span></div>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <div class="stack"><span class="eyebrow">Home Decor</span><h2 class="heading-section">Home Decor Picks</h2></div>
+        <a class="text-link" href="Category.dc.html">Shop home decor</a>
+      </div>
+      <div class="product-row">
+        <div class="product-slot"><dc-import name="ProductCard" category="Wall Art &amp; Clocks" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Vases &amp; Artificial Plants" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Rugs &amp; Carpets" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Lamps &amp; Lighting" hint-size="100%,440px"></dc-import></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="split">
+      <div class="split-media image-placeholder"><span class="image-placeholder-label">[About photo: team, store or packed orders]</span></div>
+      <div class="split-copy">
+        <span class="eyebrow">About Castore</span>
+        <h2 class="heading-section">Everything your home needs, in one place</h2>
+        <p class="body-text">[Two or three sentences about Castore Collection and who you serve.]</p>
+        <div class="row"><a class="text-link" href="About.dc.html">Read our story</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band-alt">
+    <div class="container">
+      <div class="section-heading-center"><h2 class="heading-section">What our customers say</h2></div>
+      <div class="review-row">
+        <figure class="card-review">
+          <div class="stars" aria-label="5 out of 5 stars"><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg></div>
+          <blockquote class="review-text">[Real customer review]</blockquote>
+          <figcaption class="review-by"><span class="review-name">[Customer name]</span> · [Town]</figcaption>
+        </figure>
+        <figure class="card-review">
+          <div class="stars" aria-label="5 out of 5 stars"><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg></div>
+          <blockquote class="review-text">[Real customer review]</blockquote>
+          <figcaption class="review-by"><span class="review-name">[Customer name]</span> · [Town]</figcaption>
+        </figure>
+        <figure class="card-review">
+          <div class="stars" aria-label="5 out of 5 stars"><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg><svg class="star" viewBox="0 0 24 24"><path d="m12 2 3 7 7 .6-5.3 4.7 1.6 7.2L12 17.8 5.7 21.5l1.6-7.2L2 9.6 9 9z"></path></svg></div>
+          <blockquote class="review-text">[Real customer review]</blockquote>
+          <figcaption class="review-by"><span class="review-name">[Customer name]</span> · [Town]</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="container section">
+    <div class="cta-box">
+      <div class="cta-copy">
+        <h2 class="cta-title">Get new arrivals and deals first</h2>
+        <p class="body-text">Join our WhatsApp channel for new arrivals and deals.</p>
+      </div>
+      <a class="button-dark" href="#">Join on WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"menuOpen":{"editor":"boolean","default":false},"drawerOpen":{"editor":"boolean","default":false}}'>
+const TILES = [
+  ["Kitchen & Dining", "Cookware & Pots, Pressure Cookers, Utensils & Gadgets"],
+  ["Kitchen Appliances", "Blenders & Juicers, Electric Kettles, Air Fryers"],
+  ["Water Dispensers & Filters", "Hot & Cold Dispensers, Water Pumps, Filters"],
+  ["Home Decor", "Wall Art & Clocks, Mirrors, Cushions & Throws"],
+  ["Furniture & Seating", "Inflatable Seats & Sofas, Stools & Chairs, Shoe Racks"],
+  ["Bedding", "Bedsheets, Duvets & Comforters, Blankets, Pillows"],
+  ["Bathroom", "Towels, Bath Mats, Bathroom Organisers"],
+  ["Cleaning & Laundry", "Mops & Brooms, Laundry Baskets, Drying Racks"],
+  ["Storage & Organisation", "Storage Boxes, Wardrobe Organisers, Hangers"],
+  ["Home Appliances", "Irons, Fans, Vacuum Cleaners, Heaters"]
+];
+class Component extends DCLogic {
+  renderVals() {
+    return { menuOpen: !!this.props.menuOpen, drawerOpen: !!this.props.drawerOpen, tiles: TILES.map(([name, subs]) => ({ name, subs })) };
+  }
+}
+</script>
+</body>
+</html>

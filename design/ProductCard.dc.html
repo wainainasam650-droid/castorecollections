@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<article class="card-product">
+  <div class="card-product-media image-placeholder">
+    <div class="card-product-flags">
+      <sc-if value="{{ hasBadge }}" hint-placeholder-val="{{ false }}"><span class="badge-sale">{{ badge }}</span></sc-if>
+      <button class="wishlist-button" aria-label="Add to wishlist"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button>
+    </div>
+    <span class="image-placeholder-label">[Product photo]</span>
+  </div>
+  <span class="card-product-cat">{{ category }}</span>
+  <a class="card-product-name" href="Product.dc.html">{{ name }}</a>
+  <div class="price-row">
+    <span class="price">{{ price }}</span>
+    <sc-if value="{{ hasOld }}" hint-placeholder-val="{{ false }}"><span class="price-old">{{ oldPrice }}</span></sc-if>
+  </div>
+  <div class="card-product-actions">
+    <button class="button-outline">Add to cart</button>
+    <a class="button-primary" href="Checkout.dc.html">Buy now</a>
+  </div>
+</article>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:300,&quot;height&quot;:500},&quot;category&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Furniture &amp; Seating&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;product&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Deluxe Inflatable Seat&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;price&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;KSh 2,999&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;oldPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;KSh 3,999&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;badge&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;-25%&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props;
+    return {
+      category: p.category ?? "[Category]",
+      name: p.product ?? "[Product name]",
+      price: p.price ?? "KSh [PRICE]",
+      oldPrice: p.oldPrice ?? "",
+      hasOld: !!p.oldPrice,
+      badge: p.badge ?? "",
+      hasBadge: !!p.badge
+    };
+  }
+}
+</script>
+</body>
+</html>

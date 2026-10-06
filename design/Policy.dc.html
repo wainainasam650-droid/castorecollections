@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Policies – Castore Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <div class="container page-banner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Home.dc.html">Home</a><span class="breadcrumb-sep">/</span><span>{{ title }}</span></nav>
+  </div>
+  <div class="container section-tight">
+    <div class="policy-layout">
+      <nav class="policy-nav" aria-label="Policies">
+        <sc-for list="{{ nav }}" as="n" hint-placeholder-count="4">
+          <a class="policy-nav-link {{ n.cls }}" href="#" onClick="{{ n.pick }}">{{ n.label }}</a>
+        </sc-for>
+      </nav>
+      <article class="policy-body">
+        <div class="stack">
+          <h1 class="heading-section">{{ title }}</h1>
+          <span class="small-text">Last updated: [DATE]</span>
+        </div>
+        <p class="body-text">[Introduction to this policy.]</p>
+        <h2 class="policy-heading">[Section heading]</h2>
+        <p class="body-text">[Policy text.]</p>
+        <div class="policy-points">
+          <div class="policy-point"><span class="bullet"></span><span>[Point]</span></div>
+          <div class="policy-point"><span class="bullet"></span><span>[Point]</span></div>
+          <div class="policy-point"><span class="bullet"></span><span>[Point]</span></div>
+        </div>
+        <h2 class="policy-heading">[Section heading]</h2>
+        <p class="body-text">[Policy text.]</p>
+        <h2 class="policy-heading">Questions</h2>
+        <p class="body-text">Contact us on [PHONE / WHATSAPP] or [EMAIL].</p>
+      </article>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const POLICIES = ["Delivery information", "Returns and refunds", "Privacy policy", "Terms and conditions"];
+class Component extends DCLogic {
+  state = { p: 0 };
+  renderVals() {
+    const p = this.state.p;
+    return {
+      title: POLICIES[p],
+      nav: POLICIES.map((label, i) => ({ label, cls: i === p ? "policy-nav-active" : "", pick: e => { e.preventDefault(); this.setState({ p: i }); } }))
+    };
+  }
+}
+</script>
+</body>
+</html>

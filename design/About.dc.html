@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>About – Castore Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <section class="container section">
+    <div class="split">
+      <div class="split-copy">
+        <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Home.dc.html">Home</a><span class="breadcrumb-sep">/</span><span>About</span></nav>
+        <span class="eyebrow">About Castore</span>
+        <h1 class="heading-hero">Better products. Better living.</h1>
+        <p class="lead">[Opening paragraph: who Castore Collection is and who you serve.]</p>
+      </div>
+      <div class="split-media image-placeholder"><span class="image-placeholder-label">[About photo: team, store or packed orders]</span></div>
+    </div>
+  </section>
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading"><h2 class="heading-section">Everything your home needs, in one place</h2></div>
+      <div class="value-row">
+        <div class="value-card">
+          <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg></span>
+          <h3 class="heading-small">Quality checked</h3>
+          <p class="small-text">[How you choose and check products]</p>
+        </div>
+        <div class="value-card">
+          <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
+          <h3 class="heading-small">Countrywide delivery</h3>
+          <p class="small-text">Nairobi in [X] days, countrywide in [X] days</p>
+        </div>
+        <div class="value-card">
+          <span class="icon-circle"><svg class="icon-lg" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg></span>
+          <h3 class="heading-small">WhatsApp support</h3>
+          <p class="small-text">[PHONE NUMBER]</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="container section">
+    <div class="split">
+      <div class="split-media image-placeholder"><span class="image-placeholder-label">[Photo: your store or location]</span></div>
+      <div class="split-copy">
+        <span class="eyebrow">Our story</span>
+        <h2 class="heading-section">[Story heading]</h2>
+        <p class="body-text">[Your story: when you started, where you are based in [LOCATION], and what you care about.]</p>
+        <div class="row"><a class="button-primary" href="Shop.dc.html">Shop now</a><a class="button-outline" href="Contact.dc.html">Contact</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

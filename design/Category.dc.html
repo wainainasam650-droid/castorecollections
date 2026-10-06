@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Castore Collection – Kitchen &amp; Dining</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <div class="container page-banner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Home.dc.html">Home</a><span class="breadcrumb-sep">/</span><a class="breadcrumb-link" href="Shop.dc.html">Shop All</a><span class="breadcrumb-sep">/</span><span>Kitchen &amp; Dining</span></nav>
+    <div class="category-banner">
+      <div class="category-banner-copy">
+        <span class="eyebrow">Category</span>
+        <h1 class="heading-section">Kitchen &amp; Dining</h1>
+        <p class="body-text">[One line describing this category.]</p>
+      </div>
+      <div class="category-banner-photo image-placeholder"><span class="image-placeholder-label">[Category banner photo]</span></div>
+    </div>
+  </div>
+  <div class="container">
+    <nav class="chip-row" aria-label="Subcategories">
+      <a class="chip chip-active" href="#">All</a>
+      <sc-for list="{{ subs }}" as="s" hint-placeholder-count="12">
+        <a class="chip" href="#">{{ s }}</a>
+      </sc-for>
+    </nav>
+  </div>
+  <div class="container section-tight">
+    <div class="shop-layout">
+      <aside class="filter-panel {{ panelClass }}" aria-label="Filters">
+        <div class="filter-group">
+          <span class="filter-title">Subcategory</span>
+          <sc-for list="{{ subs }}" as="s" hint-placeholder-count="12">
+            <label class="filter-option"><input class="checkbox" type="checkbox">{{ s }}</label>
+          </sc-for>
+        </div>
+        <div class="filter-group">
+          <span class="filter-title">Price (KSh)</span>
+          <div class="price-inputs">
+            <input class="field-input" type="number" aria-label="Minimum price" placeholder="Min">
+            <span class="small-text">to</span>
+            <input class="field-input" type="number" aria-label="Maximum price" placeholder="Max">
+          </div>
+          <button class="button-outline button-small">Apply</button>
+        </div>
+        <div class="filter-group">
+          <span class="filter-title">Offers</span>
+          <label class="filter-option"><input class="checkbox" type="checkbox">On sale</label>
+          <label class="filter-option"><input class="checkbox" type="checkbox">New Arrivals</label>
+        </div>
+      </aside>
+      <div class="shop-main">
+        <div class="toolbar">
+          <span class="toolbar-count">Showing 1–9 of [X] products</span>
+          <div class="toolbar-actions">
+            <button class="button-outline button-small filter-toggle" onClick="{{ toggleFilters }}" aria-expanded="{{ filtersOpenStr }}"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>Filters</button>
+            <select class="select" aria-label="Sort products">
+              <option>Sort: Featured</option>
+              <option>Newest</option>
+              <option>Price: low to high</option>
+              <option>Price: high to low</option>
+              <option>Best Sellers</option>
+            </select>
+          </div>
+        </div>
+        <div class="product-grid">
+          <div class="product-slot"><dc-import name="ProductCard" category="Cookware &amp; Pots" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Pressure Cookers" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Utensils &amp; Gadgets" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Food Storage Containers" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Dinnerware &amp; Plates" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Cups, Mugs &amp; Glasses" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Flasks &amp; Water Bottles" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Bakeware" hint-size="100%,440px"></dc-import></div>
+          <div class="product-slot"><dc-import name="ProductCard" category="Kitchen Racks &amp; Holders" hint-size="100%,440px"></dc-import></div>
+        </div>
+        <nav class="pagination" aria-label="Pages">
+          <a class="page-number" href="#" aria-label="Previous page"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"></path></svg></a>
+          <a class="page-number page-number-active" href="#" aria-current="page">1</a>
+          <a class="page-number" href="#">2</a>
+          <a class="page-number" href="#">[X]</a>
+          <a class="page-number" href="#" aria-label="Next page"><svg class="icon-sm" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"></path></svg></a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filtersOpen: false };
+  renderVals() {
+    const open = this.state.filtersOpen;
+    return {
+      subs: ["Cookware & Pots", "Pressure Cookers", "Utensils & Gadgets", "Knives & Chopping Boards", "Food Storage Containers", "Dinnerware & Plates", "Cups, Mugs & Glasses", "Flasks & Water Bottles", "Bakeware", "Tea & Serving Sets", "Kitchen Racks & Holders", "Lunch Boxes"],
+      panelClass: open ? "filter-panel-open" : "",
+      filtersOpenStr: String(open),
+      toggleFilters: () => this.setState(s => ({ filtersOpen: !s.filtersOpen }))
+    };
+  }
+}
+</script>
+</body>
+</html>

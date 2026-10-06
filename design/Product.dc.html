@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deluxe Inflatable Seat – Castore Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <div class="container page-banner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Home.dc.html">Home</a><span class="breadcrumb-sep">/</span><a class="breadcrumb-link" href="Category.dc.html">Furniture &amp; Seating</a><span class="breadcrumb-sep">/</span><span>Deluxe Inflatable Seat</span></nav>
+  </div>
+  <div class="container">
+    <div class="product-layout">
+      <div class="gallery">
+        <div class="gallery-main image-placeholder">
+          <div class="card-product-flags">
+            <span class="badge-sale">-25%</span>
+            <button class="wishlist-button" aria-label="Add to wishlist"><svg class="icon" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21l7.8-7.5 1-1.1a5.5 5.5 0 0 0 0-7.8z"></path></svg></button>
+          </div>
+          <span class="image-placeholder-label">[Product photo {{ photoNumber }}]</span>
+        </div>
+        <div class="gallery-thumbs">
+          <sc-for list="{{ thumbs }}" as="t" hint-placeholder-count="4">
+            <button class="gallery-thumb image-placeholder {{ t.cls }}" onClick="{{ t.pick }}" aria-label="{{ t.label }}"></button>
+          </sc-for>
+        </div>
+      </div>
+      <div class="product-info">
+        <div class="stack">
+          <span class="card-product-cat">Furniture &amp; Seating</span>
+          <h1 class="product-title">Deluxe Inflatable Seat</h1>
+        </div>
+        <div class="price-row">
+          <span class="price-large">KSh 2,999</span>
+          <span class="price-old">KSh 3,999</span>
+          <span class="badge-sale">-25%</span>
+        </div>
+        <p class="body-text">[Short description of the product: what it is, size, material and colours.]</p>
+        <hr class="divider">
+        <div class="stack">
+          <span class="field-label">Quantity</span>
+          <div class="qty">
+            <button class="qty-button" onClick="{{ dec }}" aria-label="Decrease quantity"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></button>
+            <span class="qty-value">{{ qty }}</span>
+            <button class="qty-button" onClick="{{ inc }}" aria-label="Increase quantity"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></button>
+          </div>
+        </div>
+        <div class="buy-row">
+          <a class="button-outline" href="Cart.dc.html">Add to cart</a>
+          <a class="button-primary" href="Checkout.dc.html">Buy now</a>
+        </div>
+        <div class="note-list">
+          <div class="note-item">
+            <span class="icon-circle-sm"><svg class="icon" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"></rect><path d="M11 18h2"></path></svg></span>
+            <div><div class="note-item-title">Pay with M-Pesa</div><div class="small-text">Pay with M-Pesa on checkout</div></div>
+          </div>
+          <div class="note-item">
+            <span class="icon-circle-sm"><svg class="icon" viewBox="0 0 24 24"><path d="M3 7h11v9H3z"></path><path d="M14 10h4l3 3v3h-7"></path><circle cx="7" cy="18" r="2"></circle><circle cx="17" cy="18" r="2"></circle></svg></span>
+            <div><div class="note-item-title">Delivery</div><div class="small-text">Nairobi in [X] days, countrywide in [X] days. Free delivery within Nairobi on orders over KSh [AMOUNT].</div></div>
+          </div>
+        </div>
+        <a class="whatsapp-link" href="#"><svg class="icon" viewBox="0 0 24 24"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"></path></svg>Ask about this product on WhatsApp</a>
+      </div>
+    </div>
+  </div>
+
+  <section class="container section-tight">
+    <div class="tabs" role="tablist">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+        <button class="tab {{ t.cls }}" role="tab" aria-selected="{{ t.selected }}" onClick="{{ t.pick }}">{{ t.label }}</button>
+      </sc-for>
+    </div>
+    <div class="tab-panel" role="tabpanel">
+      <sc-if value="{{ isDesc }}" hint-placeholder-val="{{ true }}">
+        <p class="body-text">[Full product description.]</p>
+        <div class="policy-points">
+          <div class="policy-point"><span class="bullet"></span><span>[Size]</span></div>
+          <div class="policy-point"><span class="bullet"></span><span>[Material]</span></div>
+          <div class="policy-point"><span class="bullet"></span><span>[Colours available]</span></div>
+          <div class="policy-point"><span class="bullet"></span><span>[What is in the box]</span></div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ isDelivery }}" hint-placeholder-val="{{ false }}">
+        <p class="body-text">Free delivery within Nairobi on orders over KSh [AMOUNT]. Nairobi in [X] days, countrywide in [X] days.</p>
+        <p class="body-text">[Delivery fees and areas.]</p>
+        <div class="row"><a class="text-link" href="Policy.dc.html">Delivery information</a></div>
+      </sc-if>
+      <sc-if value="{{ isReturns }}" hint-placeholder-val="{{ false }}">
+        <p class="body-text">[Returns summary: how many days, condition of items, how to start a return.]</p>
+        <div class="row"><a class="text-link" href="Policy.dc.html">Returns and refunds</a></div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section class="section section-band">
+    <div class="container">
+      <div class="section-heading">
+        <h2 class="heading-section">Related products</h2>
+        <a class="text-link" href="Category.dc.html">Shop Furniture &amp; Seating</a>
+      </div>
+      <div class="product-row">
+        <div class="product-slot"><dc-import name="ProductCard" category="Inflatable Seats &amp; Sofas" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Stools &amp; Chairs" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Side &amp; Coffee Tables" hint-size="100%,440px"></dc-import></div>
+        <div class="product-slot"><dc-import name="ProductCard" category="Shoe Racks" hint-size="100%,440px"></dc-import></div>
+      </div>
+    </div>
+  </section>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { qty: 1, photo: 0, tab: 0 };
+  renderVals() {
+    const { qty, photo, tab } = this.state;
+    const tabs = ["Description", "Delivery", "Returns"];
+    return {
+      qty,
+      inc: () => this.setState(s => ({ qty: s.qty + 1 })),
+      dec: () => this.setState(s => ({ qty: Math.max(1, s.qty - 1) })),
+      photoNumber: photo + 1,
+      thumbs: [0, 1, 2, 3].map(i => ({ cls: i === photo ? "gallery-thumb-active" : "", label: "Show photo " + (i + 1), pick: () => this.setState({ photo: i }) })),
+      tabs: tabs.map((label, i) => ({ label, cls: i === tab ? "tab-active" : "", selected: String(i === tab), pick: () => this.setState({ tab: i }) })),
+      isDesc: tab === 0, isDelivery: tab === 1, isReturns: tab === 2
+    };
+  }
+}
+</script>
+</body>
+</html>

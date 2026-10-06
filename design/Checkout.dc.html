@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout – Castore Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <div class="container page-banner">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Cart.dc.html">Cart</a><span class="breadcrumb-sep">/</span><span>Checkout</span></nav>
+    <h1 class="heading-section">Checkout</h1>
+    <span class="mockup-note">Mockup only · no data is sent</span>
+  </div>
+  <div class="container section-tight">
+    <div class="two-col">
+      <div class="two-col-main">
+        <div class="form-card">
+          <h2 class="form-card-title"><span class="step-number">1</span><span>Your details</span></h2>
+          <div class="field-row">
+            <label class="field"><span class="field-label">Full name</span><input class="field-input" type="text"></label>
+            <label class="field"><span class="field-label">Phone number</span><input class="field-input" type="tel" placeholder="07XX XXX XXX"></label>
+          </div>
+          <label class="field"><span class="field-label">Email (optional)</span><input class="field-input" type="email"></label>
+        </div>
+        <div class="form-card">
+          <h2 class="form-card-title"><span class="step-number">2</span><span>Delivery</span></h2>
+          <div class="field-row">
+            <label class="field"><span class="field-label">County</span>
+              <select class="field-input"><option>Nairobi</option><option>[Other counties]</option></select>
+            </label>
+            <label class="field"><span class="field-label">Town / area</span><input class="field-input" type="text"></label>
+          </div>
+          <label class="field"><span class="field-label">Delivery address or landmark</span><input class="field-input" type="text"></label>
+          <label class="field"><span class="field-label">Delivery notes (optional)</span><textarea class="field-textarea"></textarea></label>
+        </div>
+        <div class="form-card">
+          <h2 class="form-card-title"><span class="step-number">3</span><span>Payment</span></h2>
+          <div class="payment-option">
+            <span class="payment-radio"><span class="payment-radio-dot"></span></span>
+            <div class="payment-body">
+              <div class="stack"><span class="heading-small">M-Pesa</span><span class="small-text">[How M-Pesa payment works on your checkout]</span></div>
+              <label class="field"><span class="field-label">M-Pesa phone number</span><input class="field-input" type="tel" placeholder="07XX XXX XXX"></label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <aside class="two-col-side">
+        <div class="summary-card">
+          <h2 class="heading-small">Order summary</h2>
+          <div class="summary-item"><div class="summary-thumb image-placeholder"></div><span class="summary-item-name">Deluxe Inflatable Seat × 1</span><span>KSh 2,999</span></div>
+          <div class="summary-item"><div class="summary-thumb image-placeholder"></div><span class="summary-item-name">[Product name] × 1</span><span>KSh [PRICE]</span></div>
+          <hr class="divider">
+          <div class="summary-row"><span>Subtotal</span><span>KSh [AMOUNT]</span></div>
+          <div class="summary-row"><span>Delivery</span><span>KSh [AMOUNT]</span></div>
+          <div class="summary-total"><span>Total</span><span>KSh [AMOUNT]</span></div>
+          <button class="button-primary button-block">Pay with M-Pesa</button>
+          <span class="small-text">By placing your order you agree to our <a href="Policy.dc.html">Terms and conditions</a>.</span>
+        </div>
+      </aside>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

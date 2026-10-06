@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ – Castore Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="castore.css">
+</helmet>
+<dc-import name="Header" hint-size="100%,150px" style="position: sticky; top: var(--space-0); z-index: var(--z-header);"></dc-import>
+<main class="page">
+  <div class="container-narrow section">
+    <div class="stack-lg">
+      <nav class="breadcrumb" aria-label="Breadcrumb"><a class="breadcrumb-link" href="Home.dc.html">Home</a><span class="breadcrumb-sep">/</span><span>FAQ</span></nav>
+      <h1 class="heading-section">Frequently asked questions</h1>
+      <div class="faq-list">
+        <sc-for list="{{ groups }}" as="g" hint-placeholder-count="3">
+          <div class="faq-list">
+            <span class="faq-group-title">{{ g.title }}</span>
+            <sc-for list="{{ g.items }}" as="q" hint-placeholder-count="2">
+              <div class="faq-item">
+                <button class="faq-question" onClick="{{ q.toggle }}" aria-expanded="{{ q.openStr }}">
+                  <span>{{ q.question }}</span>
+                  <span class="faq-sign">
+                    <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M5 12h14"></path></svg></sc-if>
+                    <sc-if value="{{ q.closed }}" hint-placeholder-val="{{ true }}"><svg class="icon-sm" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"></path></svg></sc-if>
+                  </span>
+                </button>
+                <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}"><div class="faq-answer">{{ q.answer }}</div></sc-if>
+              </div>
+            </sc-for>
+          </div>
+        </sc-for>
+      </div>
+      <div class="cta-box">
+        <div class="cta-copy"><h2 class="cta-title">Still have a question?</h2><p class="body-text">Chat with us on WhatsApp: [PHONE NUMBER]</p></div>
+        <a class="button-dark" href="Contact.dc.html">Contact us</a>
+      </div>
+    </div>
+  </div>
+</main>
+<dc-import name="Footer" hint-size="100%,480px"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+const GROUPS = [
+  { title: "Ordering & payment", items: [["[Question about ordering]", "[Answer]"], ["[Question about paying with M-Pesa]", "[Answer]"]] },
+  { title: "Delivery", items: [["[Question about delivery times]", "[Answer: Nairobi in [X] days, countrywide in [X] days]"], ["[Question about delivery fees]", "[Answer]"]] },
+  { title: "Returns", items: [["[Question about returns]", "[Answer]"], ["[Question about refunds]", "[Answer]"]] }
+];
+class Component extends DCLogic {
+  state = { open: "0-0" };
+  renderVals() {
+    return {
+      groups: GROUPS.map((g, gi) => ({
+        title: g.title,
+        items: g.items.map(([question, answer], qi) => {
+          const k = gi + "-" + qi, open = this.state.open === k;
+          return { question, answer, open, closed: !open, openStr: String(open), toggle: () => this.setState(s => ({ open: s.open === k ? null : k })) };
+        })
+      }))
+    };
+  }
+}
+</script>
+</body>
+</html>
