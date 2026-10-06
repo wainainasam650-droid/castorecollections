@@ -561,7 +561,7 @@ html body .woocommerce div.product .related > h2, html body .woocommerce div.pro
 html body .woocommerce table.shop_table { border-radius: var(--radius-xl); border: var(--border-thin) solid var(--color-border); background: var(--color-surface); border-collapse: separate; overflow: hidden; }
 html body .woocommerce table.shop_table th { font-size: var(--text-sm); font-weight: var(--weight-bold); color: var(--color-muted); }
 html body .woocommerce table.shop_table td { border-top-color: var(--color-border); }
-html body .woocommerce-cart .cart-collaterals .cart_totals, html body .woocommerce-checkout #order_review, html body .woocommerce-checkout .woocommerce-checkout-review-order { background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); }
+html body .woocommerce-cart .cart-collaterals .cart_totals { background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-xl); padding: var(--space-6); }
 html body .woocommerce-checkout #payment { background: var(--color-ground); border-radius: var(--radius-lg); }
 html body .woocommerce-info, html body .woocommerce-message, html body .woocommerce-error { border-radius: var(--radius-lg); border-top-color: var(--color-accent); background: var(--color-surface); color: var(--color-ink); }
 html body .woocommerce-info::before, html body .woocommerce-message::before { color: var(--color-accent); }
@@ -592,3 +592,6 @@ html body ul.products li.product.product .onsale.onsale { margin: var(--space-0)
 .elementor .policy-content :is(h2, h3) { margin: var(--space-6) var(--space-0) var(--space-2); font-family: var(--font-display); font-size: var(--text-2xl); line-height: var(--leading-snug); color: var(--color-ink); }
 .elementor .policy-content :is(p, li) { color: var(--color-muted); line-height: var(--leading-relaxed); }
 .elementor .policy-content ul { margin: var(--space-0) var(--space-0) var(--space-4) var(--space-5); padding: var(--space-0); }
+
+html body.woocommerce-checkout #order_review_heading { margin: var(--space-0); padding: var(--space-6) var(--space-6) var(--space-2); background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-bottom: var(--space-0); border-radius: var(--radius-xl) var(--radius-xl) var(--space-0) var(--space-0); }
+html body.woocommerce-checkout #order_review { padding: var(--space-0) var(--space-6) var(--space-6); background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-top: var(--space-0); border-radius: var(--space-0) var(--space-0) var(--radius-xl) var(--radius-xl); }
