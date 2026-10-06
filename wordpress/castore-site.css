@@ -5,6 +5,9 @@
    conditions, so the Elementor breakpoints (1024px tablet, 767px mobile) are written
    as literals there. */
 
+@font-face { font-family: "Fraunces"; font-style: normal; font-weight: 500 600; font-display: swap; src: url("fonts/fraunces-latin.woff2") format("woff2"); }
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("fonts/figtree-latin.woff2") format("woff2"); }
+
 :root {
   --color-ground: #F6EFE4;
   --color-surface: #FFFCF7;
@@ -130,7 +133,8 @@
 }
 
 /* ---------- Base ---------- */
-html body { background: var(--color-ground); color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-md); line-height: var(--leading-normal); }
+html body, html body.ast-plain-container, html body.ast-page-builder-template, html body.ast-separate-container { background: var(--color-ground); }
+html body { color: var(--color-ink); font-family: var(--font-body); font-size: var(--text-md); line-height: var(--leading-normal); }
 body button, body input, body select, body textarea { font-family: var(--font-body); }
 body a { color: var(--color-accent); }
 body a:hover, body a:focus { color: var(--color-accent-dark); }
@@ -139,7 +143,7 @@ body :focus-visible { outline: var(--border-focus) solid var(--color-accent); ou
 .site-content > .ast-container, .ast-plain-container .site-content > .ast-container { max-width: none; padding-left: var(--space-0); padding-right: var(--space-0); }
 
 /* Elementor container reset: spacing comes from the classes below, not Elementor defaults. */
-.elementor .e-con { --width: auto; --padding-top: 0px; --padding-right: 0px; --padding-bottom: 0px; --padding-left: 0px; --gap: 0px; --row-gap: 0px; --column-gap: 0px; --widgets-spacing: 0px; --widgets-spacing-row: 0px; --widgets-spacing-column: 0px; }
+.elementor .e-con { max-width: 100%; --width: auto; --padding-top: 0px; --padding-right: 0px; --padding-bottom: 0px; --padding-left: 0px; --gap: 0px; --row-gap: 0px; --column-gap: 0px; --widgets-spacing: 0px; --widgets-spacing-row: 0px; --widgets-spacing-column: 0px; }
 .elementor .elementor-widget:not(:last-child) { margin-block-end: var(--space-0); }
 
 /* ---------- Layout ---------- */
@@ -201,7 +205,7 @@ body :focus-visible { outline: var(--border-focus) solid var(--color-accent); ou
 .elementor .image-placeholder-label .elementor-heading-title { font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-muted); background: var(--color-surface); border-radius: var(--radius-pill); padding: var(--space-1) var(--space-3); letter-spacing: var(--space-0); text-align: center; }
 
 /* ---------- Photos ---------- */
-.elementor .photo, .elementor .photo a { display: flex; width: 100%; height: 100%; }
+.elementor .photo, .elementor .photo > .elementor-widget-container, .elementor .photo a { display: flex; width: 100%; height: 100%; }
 .elementor .photo img { width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-2xl); }
 
 /* =========================================================
@@ -314,7 +318,9 @@ body :focus-visible { outline: var(--border-focus) solid var(--color-accent); ou
    ========================================================= */
 .elementor .e-con.site-footer { background: var(--color-deep); padding-top: var(--space-11); padding-bottom: var(--space-6); }
 .elementor .e-con.footer-cols { flex-direction: row; flex-wrap: wrap; gap: var(--space-8); }
-.elementor .e-con.footer-brand { flex: 1 1 var(--menu-col); gap: var(--space-4); }
+.elementor .e-con.footer-brand { flex: 1 1 var(--menu-col); gap: var(--space-4); align-items: flex-start; }
+.elementor .logo, .elementor .logo-light { text-align: left; }
+.elementor .footer-social .elementor-social-icons-wrapper { justify-content: flex-start; }
 .elementor .e-con.footer-col { flex: 1 1 var(--tile-mobile); gap: var(--space-3); }
 .elementor .footer-title .elementor-heading-title { font-family: var(--font-body); font-size: var(--text-sm); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-on-deep-muted); }
 .elementor .site-footer .link-list .elementor-icon-list-item a, .elementor .site-footer .link-list .elementor-icon-list-text { color: var(--color-on-deep); }
@@ -391,7 +397,7 @@ body :focus-visible { outline: var(--border-focus) solid var(--color-accent); ou
   .elementor .e-con.hero { flex-direction: column; align-items: stretch; gap: var(--space-7); padding-top: var(--space-6); }
   .elementor .e-con.hero-media { order: -1; flex: 0 0 auto; width: 100%; }
   .elementor .e-con.hero-copy { flex: 0 0 auto; }
-  .elementor .e-con.category-tiles { flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-2); }
+  .elementor .e-con.category-tiles { width: 100%; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: var(--space-2); }
   .elementor .e-con.card-category { flex: 0 0 var(--tile-width); scroll-snap-align: start; }
   .elementor .e-con.sale-banner, .elementor .e-con.split { flex-direction: column; align-items: stretch; }
   .elementor .e-con.sale-banner-copy { padding: var(--space-8); }
@@ -417,15 +423,15 @@ body :focus-visible { outline: var(--border-focus) solid var(--color-accent); ou
 /* =========================================================
    PRODUCT CARD (card-product): WooCommerce loops everywhere
    ========================================================= */
-html body .woocommerce ul.products, html body ul.products { display: flex; flex-wrap: wrap; gap: var(--space-5); margin: var(--space-0); padding: var(--space-0); grid-template-columns: none; }
+html body .woocommerce ul.products.products.products, html body ul.products.products.products { display: flex; flex-wrap: wrap; gap: var(--space-5); margin: var(--space-0); padding: var(--space-0); grid-template-columns: none; }
 html body .woocommerce ul.products::before, html body .woocommerce ul.products::after { display: none; }
-html body ul.products li.product { position: relative; display: flex; flex-direction: column; gap: var(--space-2); flex: 0 0 calc((100% - var(--space-5) * 3) / 4); width: auto; max-width: none; margin: var(--space-0); padding: var(--space-3) var(--space-3) var(--space-4); float: none; background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-xl); text-align: left; }
+html body ul.products.products li.product.product { position: relative; display: flex; flex-direction: column; gap: var(--space-2); flex: 0 0 calc((100% - var(--space-5) * 3) / 4); width: auto; max-width: none; margin: var(--space-0); padding: var(--space-3) var(--space-3) var(--space-4); float: none; background: var(--color-surface); border: var(--border-thin) solid var(--color-border); border-radius: var(--radius-xl); text-align: left; }
 html body ul.products li.product .woocommerce-LoopProduct-link, html body ul.products li.product .ast-loop-product__link { display: flex; flex-direction: column; gap: var(--space-2); text-decoration: none; color: var(--color-ink); }
 html body ul.products li.product img, html body ul.products li.product .astra-shop-thumbnail-wrap img { width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; margin: var(--space-0); border-radius: var(--radius-lg); background: var(--color-placeholder); }
 html body ul.products li.product .astra-shop-thumbnail-wrap { position: static; display: flex; flex-direction: column; }
 html body ul.products li.product .astra-shop-summary-wrap { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-0); }
 html body ul.products li.product .card-product-flags { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); }
-html body ul.products li.product .onsale, html body .woocommerce span.onsale, html body .badge-sale { position: static; display: inline-flex; align-items: center; min-height: auto; min-width: auto; margin: var(--space-0); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--color-accent); color: var(--color-white); font-size: var(--text-xs); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
+html body ul.products li.product .onsale, html body .woocommerce span.onsale, html body .badge-sale { position: static; align-self: flex-start; width: auto; display: inline-flex; align-items: center; min-height: auto; min-width: auto; margin: var(--space-0); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--color-accent); color: var(--color-white); font-size: var(--text-xs); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
 html body ul.products li.product .card-product-cat { font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-muted); }
 html body ul.products li.product .woocommerce-loop-product__title { margin: var(--space-0); padding: var(--space-0); font-family: var(--font-body); font-size: var(--text-md); font-weight: var(--weight-semibold); line-height: var(--leading-snug); letter-spacing: var(--space-0); color: var(--color-ink); }
 html body ul.products li.product .price, html body .woocommerce div.product .price, html body .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); margin: var(--space-0); color: var(--color-accent); font-size: var(--text-lg); font-weight: var(--weight-bold); }
@@ -441,11 +447,11 @@ html body ul.products li.product .card-product-actions .buy-now-button:hover { b
 html body ul.products li.product .added_to_cart { flex: 1 1 100%; font-size: var(--text-sm); font-weight: var(--weight-bold); color: var(--color-accent); text-align: center; }
 html body ul.products li.product .ast-woo-shop-product-description { display: none; }
 @media (max-width: 1024px) {
-  html body ul.products li.product { flex: 0 0 calc((100% - var(--space-5) * 2) / 3); }
+  html body ul.products.products li.product.product { flex: 0 0 calc((100% - var(--space-5) * 2) / 3); }
 }
 @media (max-width: 767px) {
-  html body .woocommerce ul.products, html body ul.products { gap: var(--space-3); }
-  html body ul.products li.product { flex: 0 0 calc((100% - var(--space-3)) / 2); padding: var(--space-2) var(--space-2) var(--space-3); }
+  html body .woocommerce ul.products.products.products, html body ul.products.products.products { gap: var(--space-3); }
+  html body ul.products.products li.product.product { flex: 0 0 calc((100% - var(--space-3)) / 2); padding: var(--space-2) var(--space-2) var(--space-3); }
   html body ul.products li.product .card-product-actions .button { flex-basis: 100%; }
 }
 .elementor .product-row .woocommerce { width: 100%; }
@@ -561,7 +567,7 @@ body .woocommerce-info::before, body .woocommerce-message::before { color: var(-
 
 /* Astra loop details */
 html body ul.products li.product .ast-woo-product-category { display: block; margin: var(--space-0); font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-muted); }
-html body.woocommerce.archive.ast-left-sidebar ul.products li.product, html body.woocommerce-page.ast-left-sidebar ul.products li.product { flex: 0 0 calc((100% - var(--space-5) * 2) / 3); }
+html body.woocommerce.archive.ast-left-sidebar ul.products.products li.product.product, html body.woocommerce-page.ast-left-sidebar ul.products.products li.product.product { flex: 0 0 calc((100% - var(--space-5) * 2) / 3); }
 @media (max-width: 767px) {
-  html body.woocommerce.archive.ast-left-sidebar ul.products li.product, html body.woocommerce-page.ast-left-sidebar ul.products li.product { flex: 0 0 calc((100% - var(--space-3)) / 2); }
+  html body.woocommerce.archive.ast-left-sidebar ul.products.products li.product.product, html body.woocommerce-page.ast-left-sidebar ul.products.products li.product.product { flex: 0 0 calc((100% - var(--space-3)) / 2); }
 }

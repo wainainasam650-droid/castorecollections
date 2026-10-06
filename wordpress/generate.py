@@ -20,7 +20,7 @@ IMG = {
     "kitchen": (468, UP + "2026/10/kitchen-hero.jpg"),
     "dishrack": (469, UP + "2026/10/dish-rack.jpg"),
     "plates": (402, UP + "2026/09/c03b543b54ccca179067b9d10f3975c0.jpg"),
-    "seat_room": (444, UP + "2026/09/d8cda7eff85d379bb87b287fb2faabaa.jpg"),
+    "seat_room": (446, UP + "2026/09/6e702aac32e880862b63aa73bc52b7b9.jpg"),
 }
 
 CATS = [

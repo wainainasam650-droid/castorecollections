@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Castore Collection site tweaks
- * Description: Fonts, the site stylesheet, product-card buttons, Buy now, category chips, WhatsApp links and product-only search for Castore Collection Kenya.
+ * Description: Self-hosted fonts, the site stylesheet, product-card buttons, Buy now, category chips, WhatsApp links and product-only search for Castore Collection Kenya.
  * Version: 1.0.0
  *
  * Installed as a must-use plugin (wp-content/mu-plugins/castore-site.php).
@@ -16,14 +16,8 @@ defined( 'ABSPATH' ) || exit;
 
 const CASTORE_CSS_DIR = 'castore';
 
-/* ---------- Fonts + stylesheet ---------- */
+/* ---------- Stylesheet + self-hosted fonts (uploads/castore/) ---------- */
 add_action( 'wp_enqueue_scripts', function () {
-	wp_enqueue_style(
-		'castore-fonts',
-		'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap',
-		array(),
-		null
-	);
 	$uploads = wp_get_upload_dir();
 	$file    = trailingslashit( $uploads['basedir'] ) . CASTORE_CSS_DIR . '/castore-site.css';
 	if ( file_exists( $file ) ) {
@@ -37,13 +31,12 @@ add_action( 'wp_enqueue_scripts', function () {
 	}
 }, 20 );
 
-add_filter( 'wp_resource_hints', function ( $urls, $relation ) {
-	if ( 'preconnect' === $relation ) {
-		$urls[] = 'https://fonts.googleapis.com';
-		$urls[] = array( 'href' => 'https://fonts.gstatic.com', 'crossorigin' );
+add_action( 'wp_head', function () {
+	$base = trailingslashit( wp_get_upload_dir()['baseurl'] ) . CASTORE_CSS_DIR . '/fonts/';
+	foreach ( array( 'figtree-latin.woff2', 'fraunces-latin.woff2' ) as $font ) {
+		printf( '<link rel="preload" href="%s" as="font" type="font/woff2" crossorigin>' . "\n", esc_url( $base . $font ) );
 	}
-	return $urls;
-}, 10, 2 );
+}, 2 );
 
 /* ---------- WhatsApp links: /whatsapp/ and /whatsapp-channel/ ---------- */
 add_action( 'template_redirect', function () {
@@ -91,7 +84,7 @@ add_filter( 'woocommerce_sale_flash', function ( $html, $post, $product ) {
 		return '<span class="onsale badge-sale">-' . $percent . '%</span>';
 	}
 	return '<span class="onsale badge-sale">Sale</span>';
-}, 10, 3 );
+}, 99, 3 );
 
 function castore_buy_now_url( $product ) {
 	if ( $product && $product->is_type( 'simple' ) && $product->is_purchasable() && $product->is_in_stock() ) {
