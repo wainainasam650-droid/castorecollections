@@ -190,7 +190,7 @@ def header():
         con("announcement-dot announcement-extra"),
         text("New arrivals every week", "announcement-item announcement-extra"),
     ], tag="div")
-    cart = widget("woocommerce-menu-cart", {"icon": "bag-medium", "items_indicator": "plain", "show_subtotal": "", "cart_type": "side-cart", "hide_empty_indicator": ""}, "header-cart")
+    cart = widget("woocommerce-menu-cart", {"icon": "bag-medium", "items_indicator": "plain", "show_subtotal": "", "cart_type": "side-cart", "hide_empty_indicator": "hide"}, "header-cart")
     main = section("header-main", [wrap([
         image("logo", "logo", "/", "full"),
         widget("wp-widget-woocommerce_product_search", {"wp": {"title": ""}}, "search-bar"),
@@ -209,7 +209,7 @@ def header():
         button("Menu", "#", "menu-button", icon("fas fa-bars"), dynamic_popup="__DRAWER_ID__"),
         image("logo", "logo", "/", "full"),
         widget("search-form", {"skin": "full_screen", "placeholder": "Search for cookware, dispensers, decor…", "toggle_align": "end"}, "search-toggle"),
-        widget("woocommerce-menu-cart", {"icon": "bag-medium", "items_indicator": "plain", "show_subtotal": "", "cart_type": "side-cart", "hide_empty_indicator": ""}, "header-cart"),
+        widget("woocommerce-menu-cart", {"icon": "bag-medium", "items_indicator": "plain", "show_subtotal": "", "cart_type": "side-cart", "hide_empty_indicator": "hide"}, "header-cart"),
     ], "header-compact-inner")], tag="div")
     return [announcement, main, menu, compact]
 

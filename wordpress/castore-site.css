@@ -431,7 +431,7 @@ html body ul.products li.product img, html body ul.products li.product .astra-sh
 html body ul.products li.product .astra-shop-thumbnail-wrap { position: static; display: flex; flex-direction: column; }
 html body ul.products li.product .astra-shop-summary-wrap { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-0); }
 html body ul.products li.product .card-product-flags { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-2); }
-html body ul.products li.product .onsale, html body .woocommerce span.onsale, html body .badge-sale { position: static; align-self: flex-start; width: auto; display: inline-flex; align-items: center; min-height: auto; min-width: auto; margin: var(--space-0); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--color-accent); color: var(--color-white); font-size: var(--text-xs); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
+html body ul.products li.product .onsale, html body .woocommerce span.onsale, html body .badge-sale { position: static; inset: auto; transform: none; align-self: flex-start; width: auto; display: inline-flex; align-items: center; min-height: auto; min-width: auto; margin: var(--space-0); padding: var(--space-1) var(--space-3); border-radius: var(--radius-pill); background: var(--color-accent); color: var(--color-white); font-size: var(--text-xs); font-weight: var(--weight-bold); line-height: var(--leading-snug); }
 html body ul.products li.product .card-product-cat { font-size: var(--text-xs); font-weight: var(--weight-bold); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--color-muted); }
 html body ul.products li.product .woocommerce-loop-product__title { margin: var(--space-0); padding: var(--space-0); font-family: var(--font-body); font-size: var(--text-md); font-weight: var(--weight-semibold); line-height: var(--leading-snug); letter-spacing: var(--space-0); color: var(--color-ink); }
 html body ul.products li.product .price, html body .woocommerce div.product .price, html body .price { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2); margin: var(--space-0); color: var(--color-accent); font-size: var(--text-lg); font-weight: var(--weight-bold); }
@@ -571,3 +571,6 @@ html body.woocommerce.archive.ast-left-sidebar ul.products.products li.product.p
 @media (max-width: 767px) {
   html body.woocommerce.archive.ast-left-sidebar ul.products.products li.product.product, html body.woocommerce-page.ast-left-sidebar ul.products.products li.product.product { flex: 0 0 calc((100% - var(--space-3)) / 2); }
 }
+
+/* Product rows hide themselves until their category has products. */
+.elementor .e-con.band:has(.product-row):not(:has(li.product)) { display: none; }
