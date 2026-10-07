@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Castore Collection site tweaks
- * Description: Self-hosted fonts, the site stylesheet, product-card buttons, Buy now, category chips, WhatsApp links and product-only search for Castore Collection Kenya.
+ * Description: Self-hosted font preloads, product-card buttons, Buy now, category chips, WhatsApp links and product-only search for Castore Collection Kenya.
  * Version: 1.0.0
  *
  * Installed as a must-use plugin (wp-content/mu-plugins/castore-site.php).
@@ -14,23 +14,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
-const CASTORE_CSS_DIR = 'castore';
+const CASTORE_CSS_DIR = 'castore'; // uploads/castore holds the self-hosted fonts.
 
-/* ---------- Stylesheet + self-hosted fonts (uploads/castore/) ---------- */
-add_action( 'wp_enqueue_scripts', function () {
-	$uploads = wp_get_upload_dir();
-	$file    = trailingslashit( $uploads['basedir'] ) . CASTORE_CSS_DIR . '/castore-site.css';
-	if ( file_exists( $file ) ) {
-		$deps = array();
-		foreach ( array( 'astra-theme-css', 'woocommerce-general', 'elementor-frontend' ) as $handle ) {
-			if ( wp_style_is( $handle, 'registered' ) ) {
-				$deps[] = $handle;
-			}
-		}
-		wp_enqueue_style( 'castore-site', trailingslashit( $uploads['baseurl'] ) . CASTORE_CSS_DIR . '/castore-site.css', $deps, (string) filemtime( $file ) );
-	}
-}, 20 );
-
+/* ---------- Self-hosted fonts (uploads/castore/fonts); the stylesheet is in Elementor Site Settings > Custom CSS ---------- */
 add_action( 'wp_head', function () {
 	$base = trailingslashit( wp_get_upload_dir()['baseurl'] ) . CASTORE_CSS_DIR . '/fonts/';
 	foreach ( array( 'figtree-latin.woff2', 'fraunces-latin.woff2' ) as $font ) {

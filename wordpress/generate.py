@@ -330,7 +330,7 @@ def home():
     categories = section("band", [wrap([section_head("Shop by category", "All categories", "/shop/"), con("category-tiles", tiles)])])
 
     def row(title, url, query, alt=False):
-        return section("band" + (" band-alt" if alt else ""), [wrap([
+        return section("band product-band" + (" band-alt" if alt else ""), [wrap([
             section_head(title, "View all", url),
             products("product-row", query),
         ])])
